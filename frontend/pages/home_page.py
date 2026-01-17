@@ -1,0 +1,18 @@
+import streamlit as st
+from frontend.api import get_products, add_to_cart
+from frontend.components.product_card import render_product_card
+
+def render():
+    st.subheader("Products")
+
+    r = get_products()
+    if r.status_code != 200:
+        st.error("Failed to load products")
+        return
+
+    products = r.json()
+    # cols = st.columns(5)
+
+    for i, product in enumerate(products):
+        render_product_card(product,add_to_cart)
+        # st.title("")
