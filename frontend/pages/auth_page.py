@@ -1,7 +1,7 @@
 import streamlit as st
 
-from ..api import login, register
-from ..auth import save_session
+from frontend.api import login, register
+from frontend.auth import save_session
 
 
 def render():

@@ -1,6 +1,6 @@
 import streamlit as st
 
-from ..api import checkout
+from frontend.api import checkout
 
 
 def render():
