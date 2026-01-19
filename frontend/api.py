@@ -1,7 +1,7 @@
 import requests
 from auth import auth_headers
 
-API = "http://127.0.0.1:8000"
+API = "https://ecommerce-app-g703.onrender.com"
 
 
 def register(email, password):
