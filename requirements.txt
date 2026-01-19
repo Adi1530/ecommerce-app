@@ -11,3 +11,4 @@ pydantic
 pyjwt
 pydantic-settings
 pydantic[email]
+argon2_cffi
