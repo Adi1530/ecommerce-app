@@ -10,3 +10,4 @@ python-dotenv
 pydantic
 pyjwt
 pydantic-settings
+pydantic[email]
