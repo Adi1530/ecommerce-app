@@ -1,6 +1,6 @@
 import streamlit as st
 
-from frontend.api import get_all_orders
+from api import get_all_orders
 
 
 def render():

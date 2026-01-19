@@ -8,8 +8,8 @@ tracks the logged-in user, and handles navigation between different sections.
 """
 
 import streamlit as st
-from frontend.auth import logout
-from frontend.pages import admin_page, auth_page, checkout_page, home_page
+from auth import logout
+from pages import admin_page, auth_page, checkout_page, home_page
 
 st.set_page_config(page_title="Ecommerce", layout="wide")
 

@@ -1,7 +1,7 @@
 import streamlit as st
 
-from frontend.api import add_to_cart, get_products
-from frontend.components.product_card import render_product_card
+from api import add_to_cart, get_products
+from components.product_card import render_product_card
 
 
 def render():
