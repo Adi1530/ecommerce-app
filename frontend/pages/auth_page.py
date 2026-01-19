@@ -1,6 +1,8 @@
 import streamlit as st
-from frontend.api import register, login
+
+from frontend.api import login, register
 from frontend.auth import save_session
+
 
 def render():
     st.title("Ecommerce")

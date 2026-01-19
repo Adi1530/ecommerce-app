@@ -1,5 +1,6 @@
-from backend.tests.base import BaseTestCase
 from backend.domains.core.hashing import hash_password, verify_password
+from backend.tests.base import BaseTestCase
+
 
 class TestHashing(BaseTestCase):
 
@@ -8,4 +9,4 @@ class TestHashing(BaseTestCase):
         hashed_password = hash_password(password)
 
         self.assertNotEqual(password, hashed_password)
-        self.assertTrue(verify_password(password,hashed_password))
+        self.assertTrue(verify_password(password, hashed_password))

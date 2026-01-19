@@ -1,5 +1,7 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean
+from sqlalchemy import Boolean, Column, Float, Integer, String
+
 from backend.domains.core.database import Base
+
 
 class Product(Base):
     __tablename__ = "products"
@@ -9,4 +11,3 @@ class Product(Base):
     description = Column(String)
     price = Column(Float)
     is_active = Column(Boolean, default=True)
-

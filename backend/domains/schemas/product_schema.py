@@ -1,12 +1,14 @@
 from pydantic import BaseModel
 
+
 class ProductCreate(BaseModel):
-    name : str
-    description : str
-    price : float
+    name: str
+    description: str
+    price: float
+
 
 class ProductResponse(ProductCreate):
-    id : int
+    id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

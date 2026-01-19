@@ -1,20 +1,19 @@
 import streamlit as st
+
 from frontend.api import get_all_orders
-from datetime import datetime
 
 
 def render():
     st.subheader("Admin Dashboard - Orders")
 
-    # Fetch all orders
     response = get_all_orders()
-    
+
     if response.status_code != 200:
         st.error("Failed to load orders")
         return
 
     orders = response.json()
-    
+
     if not orders:
         st.info("No orders to dispatch")
         return
@@ -22,7 +21,6 @@ def render():
     st.write(f"### Total Orders: {len(orders)}")
     st.divider()
 
-    # Display orders in table format
     for order in orders:
         with st.container():
             st.markdown(
@@ -61,7 +59,7 @@ def render():
                 }
                 </style>
                 """,
-                unsafe_allow_html=True
+                unsafe_allow_html=True,
             )
 
             st.markdown(
@@ -92,16 +90,18 @@ def render():
                     </div>
                 </div>
                 """,
-                unsafe_allow_html=True
+                unsafe_allow_html=True,
             )
 
             col1, col2 = st.columns(2)
             with col1:
                 if st.button("Mark as Dispatched", key=f"dispatch_{order['id']}"):
                     st.success(f"Order {order['id']} marked as dispatched")
-            
+
             with col2:
                 if st.button("View Details", key=f"details_{order['id']}"):
-                    st.info(f"Order Details:\n- User: {order['user_id']}\n- Products: {order['product_id']}\n- Address: {order['address']}")
+                    st.info(
+                        f"Order Details:\n- User: {order['user_id']}\n- Products: {order['product_id']}\n- Address: {order['address']}"
+                    )
 
         st.divider()

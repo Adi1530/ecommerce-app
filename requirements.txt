@@ -8,8 +8,5 @@ streamlit
 requests
 python-dotenv
 pydantic
-pydantic
-pydantic
 pyjwt
-pydantic-settings
 pydantic-settings

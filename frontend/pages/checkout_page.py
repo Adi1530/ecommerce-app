@@ -1,4 +1,5 @@
 import streamlit as st
+
 from frontend.api import checkout
 
 
@@ -13,39 +14,40 @@ def render():
         st.info("Your cart is empty")
         return
 
-    # Display cart items
     st.write("### Your Items")
-    
+
     total_amount = 0
     cart_data = []
-    
+
     for item in st.session_state["cart"]:
         col1, col2, col3, col4, col5 = st.columns(5)
-        
+
         with col1:
             st.write(item["name"])
-        
+
         with col2:
             st.write(f"₹{item['price']}")
-        
+
         with col3:
             st.write(f"Qty: {item['quantity']}")
-        
+
         item_total = item["price"] * item["quantity"]
         with col4:
             st.write(f"₹{item_total}")
-        
+
         with col5:
             if st.button("Remove", key=f"remove_{item['product_id']}"):
                 st.session_state["cart"].remove(item)
                 st.rerun()
-        
+
         total_amount += item_total
-        cart_data.append({
-            "product_id": item["product_id"],
-            "quantity": item["quantity"],
-            "price": item["price"]
-        })
+        cart_data.append(
+            {
+                "product_id": item["product_id"],
+                "quantity": item["quantity"],
+                "price": item["price"],
+            }
+        )
 
     # Divider
     st.divider()
@@ -61,10 +63,9 @@ def render():
         if not address.strip():
             st.error("Please enter delivery address")
             return
-        
-        # Call checkout API
+
         response = checkout(cart_data, address, total_amount)
-        
+
         if response.status_code == 200:
             st.success("Order placed successfully!")
             st.session_state["cart"] = []
